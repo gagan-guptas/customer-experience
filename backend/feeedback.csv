@@ -1,0 +1,31 @@
+Customer ID,Date,Feedback Text,Rating,"Sentiment Score(-1,0,1)"
+C001,2024-03-15,The customer service was excellent. I really enjoyed the responsiveness and would definitely recommend it to others.,5,1
+C002,2024-02-20,I found the features to be disappointing. The website needs improvement.,2,-1
+C003,2024-05-01,Outstanding product! The quality was exceeded my expectations and I loved my experience.,5,1
+C004,2024-01-10,I had a poor experience with the delivery. The reliability was confusing.,1,-1
+C005,2024-04-12,"The value for money was good, but the app could be improved. Overall I was neutral about it.",3,-1
+C006,2024-03-28,The product was satisfactory. I was satisfied with the quality and would probably recommend it.,4,1
+C007,2024-02-05,Terrible website! The interface was had some issues and I disliked my experience.,1,-1
+C008,2024-04-30,I found the user experience to be outstanding. The subscription service exceeded my expectations.,5,1
+C009,2024-01-17,The reliability was average. The delivery met my needs.,3,1
+C010,2024-05-08,I had a excellent experience with the app. The features was worth the price.,5,1
+C011,2024-02-25,"The interface was poor, but the customer service could be improved. Overall I was disappointed by it.",2,-1
+C012,2024-03-20,Good product! The value for money was intuitive and I was satisfied with my experience.,4,1
+C013,2024-01-30,I found the responsiveness to be terrible. The website needs improvement.,1,-1
+C014,2024-04-15,The quality was outstanding. The customer service was flawless.,5,1
+C015,2024-02-10,I had a average experience with the delivery. The reliability had some issues.,3,-1
+C016,2024-05-05,Disappointing app! The interface was confusing and I disliked my experience.,2,-1
+C017,2024-03-01,"The features was excellent, but the subscription service could be improved. Overall I was satisfied with it.",4,1
+C018,2024-04-22,I found the user experience to be good. The product exceeded my expectations.,4,1
+C019,2024-01-25,Outstanding delivery! The reliability was met my needs and I loved my experience.,5,1
+C020,2024-02-15,I had a terrible experience with the website. The interface was had some issues.,1,-1
+C021,2024-04-10,"The responsiveness was satisfactory, but the customer service could be improved. Overall I was neutral about it.",3,-1
+C022,2024-03-18,Good app! The value for money was intuitive and I really enjoyed my experience.,4,1
+C023,2024-05-02,I found the quality to be poor. The product needs improvement.,2,-1
+C024,2024-01-12,The reliability was average. The delivery met my needs.,3,1
+C025,2024-02-28,I had a excellent experience with the subscription service. The features was worth the price.,5,1
+C026,2024-04-05,Disappointing website! The user experience was confusing and I disliked my experience.,2,-1
+C027,2024-03-10,"The interface was outstanding, but the app could be improved. Overall I loved it.",4,1
+C028,2024-01-20,I found the value for money to be terrible. The product needs improvement.,1,-1
+C029,2024-05-07,Good customer service! The responsiveness was met my needs and I was satisfied with my experience.,4,1
+C030,2024-02-08,I had a average experience with the website. The quality had some issues.,3,-1
