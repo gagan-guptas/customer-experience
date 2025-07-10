@@ -22,14 +22,6 @@ ChartJS.register(
   ArcElement
 );
 
-// Helper function to categorize sentiment
-const getSentimentCategory = (score) => {
-  if (score === 1) return "Positive";
-  if (score === 0) return "Neutral";
-  if (score === -1) return "Negative";
-  return "Unknown"; // Should ideally not happen with the new polarity
-};
-
 function App() {
   const [feedbackData, setFeedbackData] = useState([]);
   const [summary, setSummary] = useState("");
@@ -57,15 +49,15 @@ function App() {
           setFeedbackData(data.feedbackData);
           setSummary(data.summary);
 
-          // Calculate sentiment counts
+          // Corrected: Count sentiment based on "Sentiment" field (-1,0,1)
           let positive = 0;
           let neutral = 0;
           let negative = 0;
           data.feedbackData.forEach((item) => {
-            const score = item["Sentiment Score (1-5)"];
-            if (score >= 4) positive++;
-            else if (score === 3) neutral++;
-            else if (score <= 2) negative++;
+            const score = item["Sentiment"];
+            if (score === 1) positive++;
+            else if (score === 0) neutral++;
+            else if (score === -1) negative++;
           });
           setSentimentCounts({ positive, neutral, negative });
         } else {
@@ -152,7 +144,6 @@ function App() {
           "rgba(255, 99, 132, 0.8)", // Red
         ],
         borderColor: [
-          // Add borders for better separation
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)",
           "rgba(255, 99, 132, 1)",
@@ -170,39 +161,33 @@ function App() {
       legend: {
         position: "top",
         labels: {
-          color: "#e2e8f0", // slate-200
-          font: {
-            size: 14,
-          },
+          color: "#e2e8f0",
+          font: { size: 14 },
         },
       },
       title: {
         display: true,
         text: "Feedback Sentiment Analysis",
-        color: "#cbd5e1", // slate-300
-        font: {
-          size: 18,
-          weight: "bold",
-        },
+        color: "#cbd5e1",
+        font: { size: 18, weight: "bold" },
       },
       tooltip: {
         backgroundColor: "rgba(0, 0, 0, 0.8)",
         titleColor: "#fff",
         bodyColor: "#fff",
-        borderColor: "#334155", // slate-700
+        borderColor: "#334155",
         borderWidth: 1,
       },
     },
     scales: {
-      // Only for bar chart, pie chart doesn't use scales
       y: {
         beginAtZero: true,
-        ticks: { color: "#94a3b8" }, // slate-400
-        grid: { color: "#334155" }, // slate-700
+        ticks: { color: "#94a3b8" },
+        grid: { color: "#334155" },
       },
       x: {
-        ticks: { color: "#94a3b8" }, // slate-400
-        grid: { color: "#334155" }, // slate-700
+        ticks: { color: "#94a3b8" },
+        grid: { color: "#334155" },
       },
     },
   };
@@ -231,7 +216,7 @@ function App() {
         </p>
       </header>
 
-      {/* Section 1: Stat Cards */}
+      {/* Stat Cards */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
         <StatCard
           title="Positive Feedback"
@@ -253,15 +238,13 @@ function App() {
         />
       </section>
 
-      {/* Section 2: Charts */}
+      {/* Charts */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12">
         <div className="bg-slate-800/70 backdrop-blur-md p-4 md:p-6 rounded-xl shadow-2xl">
           <h2 className="text-2xl font-semibold text-sky-300 mb-4 text-center">
             Feedback Distribution (Bar)
           </h2>
           <div className="h-80 md:h-96">
-            {" "}
-            {/* Set a fixed height for chart container */}
             <Bar data={barChartData} options={chartOptions} />
           </div>
         </div>
@@ -270,18 +253,12 @@ function App() {
             Feedback Distribution (Pie)
           </h2>
           <div className="h-80 md:h-96">
-            {" "}
-            {/* Set a fixed height for chart container */}
-            <Pie
-              data={pieChartData}
-              options={{ ...chartOptions, scales: {} }}
-            />{" "}
-            {/* Pie chart doesn't need scales */}
+            <Pie data={pieChartData} options={{ ...chartOptions, scales: {} }} />
           </div>
         </div>
       </section>
 
-      {/* Section 3: AI Summary */}
+      {/* AI Summary */}
       <section className="mb-10 bg-slate-800/70 backdrop-blur-md p-6 rounded-xl shadow-2xl">
         <h2 className="text-2xl md:text-3xl font-semibold text-sky-300 mb-4">
           AI Generated Summary
@@ -295,48 +272,29 @@ function App() {
         </div>
       </section>
 
-      {/* Optional: Detailed Feedback Table (can be toggled or kept for reference) */}
+      {/* Raw Feedback Table */}
       <section className="bg-slate-800/70 backdrop-blur-md p-6 rounded-lg shadow-xl">
         <h2 className="text-2xl md:text-3xl font-semibold text-sky-300 mb-6">
           Raw Feedback Data
         </h2>
         {feedbackData.length > 0 ? (
           <div className="overflow-x-auto max-h-96">
-            {" "}
-            {/* Added max-h for scrollability */}
             <table className="min-w-full divide-y divide-slate-700">
               <thead className="bg-slate-700 sticky top-0">
-                {" "}
-                {/* Sticky header */}
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider"
-                  >
+                  <th className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider">
                     ID
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider"
-                  >
+                  <th className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider">
                     Date
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider"
-                  >
+                  <th className="px-6 py-3 text-left text-xs font-medium text-sky-300 uppercase tracking-wider">
                     Feedback
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-sky-300 uppercase tracking-wider"
-                  >
+                  <th className="px-6 py-3 text-center text-xs font-medium text-sky-300 uppercase tracking-wider">
                     Rating
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-sky-300 uppercase tracking-wider"
-                  >
+                  <th className="px-6 py-3 text-center text-xs font-medium text-sky-300 uppercase tracking-wider">
                     Sentiment
                   </th>
                 </tr>
@@ -360,7 +318,7 @@ function App() {
                       {item.Rating}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-300 text-center">
-                      {item["Sentiment Score (1-5)"]}
+                      {item.Sentiment}
                     </td>
                   </tr>
                 ))}
@@ -368,9 +326,7 @@ function App() {
             </table>
           </div>
         ) : (
-          <p className="text-slate-400">
-            No feedback data available to display.
-          </p>
+          <p className="text-slate-400">No feedback data available to display.</p>
         )}
       </section>
     </div>

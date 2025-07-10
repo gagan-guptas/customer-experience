@@ -1,4 +1,4 @@
-Customer ID,Date,Feedback Text,Rating,"Sentiment Score(-1,0,1)"
+Customer ID,Date,Feedback Text,Rating,Sentiment
 C001,2024-03-15,The customer service was excellent. I really enjoyed the responsiveness and would definitely recommend it to others.,5,1
 C002,2024-02-20,I found the features to be disappointing. The website needs improvement.,2,-1
 C003,2024-05-01,Outstanding product! The quality was exceeded my expectations and I loved my experience.,5,1
